@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Interfaces\BookRepositoryInterface;
+use App\Repositories\BookRepositoryImplementation;
 use Illuminate\Http\Request;
 
 class BookRepoController extends Controller
 {
-    public function __construct(private BookRepositoryInterface $books) {}
+    public function __construct(private BookRepositoryInterface $books = new BookRepositoryImplementation()) {}
 
     public function index()          { return $this->books->all(); }
 
