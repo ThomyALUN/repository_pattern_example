@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 class BookRepoController extends Controller
 {
-    public function __construct(private BookRepositoryInterface $books = new BookRepositoryImplementation()) {}
+    private BookRepositoryInterface $books;
+
+    public function __construct() {
+        $this->books = new BookRepositoryImplementation();
+    }
 
     public function index()          { return $this->books->all(); }
 
